@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  transition: background-color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header {
+  background-color: #4a90e2; /* Bright blue header background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  margin-bottom: 30px; /* Space between header and canvas */
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+canvas {
+  display: block;
+  border: 2px solid #ddd; /* Light border for canvas */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  background-color: #ffffff; /* Canvas background to contrast with body */
+  transition: border-color 0.3s ease; /* Smooth border color change on hover */
+}
+
+canvas:hover {
+  border-color: #4a90e2; /* Change border to match header color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Slightly smaller font size on smaller screens */
+  }
+}
