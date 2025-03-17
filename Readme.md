@@ -14,7 +14,9 @@ Quando duas bolas colidem, o sistema:
 4. Utiliza um coeficiente de restituição de 1.0 para colisões perfeitamente elásticas
 5. Implementa um impulso mínimo para prevenir que bolas fiquem "grudadas"
 
-![Demonstração da colisão elástica](example.gif)
+<div align="center">
+  <img src="example.gif" alt="Exemplo" />
+</div>
 
 ## Implementação
 
