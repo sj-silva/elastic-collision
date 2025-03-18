@@ -53,3 +53,7 @@ drag() {
 ```
 
 Esta implementação proporciona um comportamento mais realista às bolas, que gradualmente perdem velocidade ao se moverem pelo espaço, similar ao que ocorreria em um ambiente real com resistência do ar.
+
+## Referências
+
+Esta implementação foi baseada nos conceitos apresentados no livro "The Nature of Code" de Daniel Shiffman, professor da New York University e criador do canal do YouTube "The Coding Train". O livro e o canal são excelentes recursos para quem deseja aprender sobre simulações de física e sistemas naturais usando programação criativa.
