@@ -14,11 +14,13 @@ body {
 }
 
 header {
-  background-color: #4a90e2; /* Bright blue header background */
+  background-color: #4a90e2;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  margin-bottom: 30px; /* Space between header and canvas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 600px;
 }
 
 h1 {
@@ -27,24 +29,48 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 600;
+  margin: 0;
 }
 
 canvas {
   display: block;
-  border: 2px solid #ddd; /* Light border for canvas */
+  border: 2px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  background-color: #ffffff; /* Canvas background to contrast with body */
-  transition: border-color 0.3s ease; /* Smooth border color change on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  max-width: 100%;
+  height: auto;
 }
 
 canvas:hover {
-  border-color: #4a90e2; /* Change border to match header color on hover */
+  border-color: #4a90e2;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #357abd;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem; /* Slightly smaller font size on smaller screens */
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 16px;
   }
 }

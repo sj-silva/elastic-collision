@@ -27,3 +27,29 @@ O código usa vetores para calcular com precisão os impulsos de colisão, resul
 - Ângulo de colisão
 
 As trajetórias resultantes simulam o comportamento esperado na física do mundo real.
+
+## Força de Arrasto (Drag Force)
+
+A simulação agora implementa uma força de arrasto que simula a resistência do ar. Esta força:
+
+- É proporcional ao quadrado da velocidade (característica de arrasto em fluidos em velocidades maiores)
+- Opera na direção oposta ao movimento
+- Utiliza um coeficiente de arrasto de 0.0008, calibrado para proporcionar uma desaceleração sutil e realista
+- Só é aplicada quando a velocidade está acima de um limite mínimo, evitando que objetos em movimento lento sejam afetados excessivamente
+
+```javascript
+drag() {
+  const speedSq = this.velocity.magSq();
+  // Only apply drag when velocity is significant
+  if (speedSq < 0.01) return;
+
+  let dragForce = this.velocity.copy();
+  dragForce.normalize().mult(-1);
+  const dragCoef = 0.0008;
+
+  dragForce.setMag(dragCoef * speedSq);
+  this.applyForce(dragForce);
+}
+```
+
+Esta implementação proporciona um comportamento mais realista às bolas, que gradualmente perdem velocidade ao se moverem pelo espaço, similar ao que ocorreria em um ambiente real com resistência do ar.

@@ -1,7 +1,7 @@
 let balls = [];
 let noiseOffset = 0;
 let frictionCoef = 0.1;
-
+let canvas;
 class Ball {
   #maxVelocity = 5;
   constructor(x, y, color) {
@@ -39,6 +39,18 @@ class Ball {
     }
   }
 
+  drag() {
+    const speedSq = this.velocity.magSq();
+    // Only apply drag when velocity is significant
+    if (speedSq < 0.01) return;
+
+    let dragForce = this.velocity.copy();
+    dragForce.normalize().mult(-1);
+    const dragCoef = 0.0008;
+
+    dragForce.setMag(dragCoef * speedSq);
+    this.applyForce(dragForce);
+  }
   collide(other) {
     // Position Difference vector (from this to other)
     const positionDiffVector = p5.Vector.sub(other.position, this.position);
@@ -136,17 +148,24 @@ class Ball {
   }
 }
 
-function setup() {
-  createCanvas(500, 500);
+function initializeBalls() {
+  balls = [];
   const colors = [
-    [255, 0, 0], // Red
-    [0, 0, 255], // Blue
-    [255, 255, 0], // Yellow]
+    [255, 0, 0], //Red
+    [0, 0, 255], //Blue
+    [255, 255, 0], //Yellow
   ];
 
-  balls.push(new Ball(width / 3, height / 4, colors[0])); // Red ball
-  balls.push(new Ball((2 * width) / 3, height / 2, colors[1])); // Blue ball
-  balls.push(new Ball(width / 2, height / 3, colors[2])); // Yellow ball
+  balls.push(new Ball(width / 3, height / 4, colors[0]));
+  balls.push(new Ball((2 * width) / 3, height / 2, colors[1]));
+  balls.push(new Ball(width / 2, height / 3, colors[2]));
+}
+
+function setup() {
+  canvas = createCanvas(windowWidth * 0.9, windowHeight * 0.6);
+  canvas.parent(document.body);
+  gravity = createVector(0, 0.5);
+  initializeBalls();
 }
 
 function draw() {
@@ -159,6 +178,7 @@ function draw() {
     ball.applyForce(weightForce);
     ball.move();
     ball.display();
+    ball.drag();
     ball.friction();
     for (let otherBall of balls) {
       if (otherBall != ball) {
@@ -166,4 +186,8 @@ function draw() {
       }
     }
   }
+}
+
+function restartSimulation() {
+  initializeBalls();
 }
